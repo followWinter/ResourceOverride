@@ -58,6 +58,7 @@
             if ($el.hasClass("normalOverride")) {
                 rules.push({
                     type: "normalOverride",
+                    name: $el.find(".nameInput").val(),
                     match: $el.find(".matchInput").val(),
                     replace: $el.find(".replaceInput").val(),
                     on: $el.find(".onoffswitch")[0].isOn
@@ -65,6 +66,7 @@
             } else if ($el.hasClass("fileOverride")) {
                 rules.push({
                     type: "fileOverride",
+                    name: $el.find(".nameInput").val(),
                     match: $el.find(".matchInput").val(),
                     file: app.files[el.id] || "",
                     fileId: el.id,
@@ -73,6 +75,7 @@
             } else if ($el.hasClass("fileInject")) {
                 rules.push({
                     type: "fileInject",
+                    name: $el.find(".nameInput").val(),
                     fileName: $el.find(".fileName").val(),
                     file: app.files[el.id] || "",
                     fileId: el.id,
@@ -83,6 +86,7 @@
             } else if ($el.hasClass("headerRule")) {
                 rules.push({
                     type: "headerRule",
+                    name: $el.find(".nameInput").val(),
                     match: $el.find(".matchInput").val(),
                     requestRules: $el.find(".requestRules").data("rules") || "",
                     responseRules: $el.find(".responseRules").data("rules") || "",

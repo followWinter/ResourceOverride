@@ -12,6 +12,7 @@
         saveFunc = saveFunc || function() {};
 
         const override = util.instanceTemplate(ui.fileInjectTemplate);
+        const name = override.find(".nameInput");
         const fileName = override.find(".fileName");
         const injectLocation = override.find(".injectLocationSelect");
         const fileType = override.find(".fileTypeSelect");
@@ -19,6 +20,7 @@
         const ruleOnOff = override.find(".onoffswitch");
         const deleteBtn = override.find(".sym-btn");
 
+        name.val(savedData.name || "");
         fileName.val(savedData.fileName || "");
         injectLocation.val(savedData.injectLocation || "head");
         fileType.val(savedData.fileType || "js");
@@ -48,6 +50,7 @@
             util.deleteButtonIsSureReset(deleteBtn);
         });
 
+        name.on("keyup", saveFunc);
         fileName.on("keyup", saveFunc);
         ruleOnOff.on("click change", function() {
             override.toggleClass("disabled", !ruleOnOff[0].isOn);

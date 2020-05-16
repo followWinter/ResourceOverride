@@ -12,12 +12,14 @@
         saveFunc = saveFunc || function() {};
 
         const override = util.instanceTemplate(ui.fileOverrideTemplate);
+        const nameInput = override.find(".nameInput");
         const matchInput = override.find(".matchInput");
         const editBtn = override.find(".edit-btn");
         const ruleOnOff = override.find(".onoffswitch");
         const deleteBtn = override.find(".sym-btn");
 
         matchInput.val(savedData.match || "");
+        nameInput.val(savedData.name || "");
         util.makeFieldRequired(matchInput);
         ruleOnOff[0].isOn = savedData.on === false ? false : true;
 
@@ -48,6 +50,7 @@
         app.mainSuggest.init(matchInput);
 
         matchInput.on("keyup", saveFunc);
+        nameInput.on("keyup", saveFunc);
         ruleOnOff.on("click change", function() {
             override.toggleClass("disabled", !ruleOnOff[0].isOn);
             saveFunc();

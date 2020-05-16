@@ -13,6 +13,7 @@
         saveFunc = saveFunc || function() {};
 
         const override = util.instanceTemplate(ui.headerRuleTemplate);
+        const nameInput = override.find(".nameInput");
         const matchInput = override.find(".matchInput");
         const requestRulesInput = override.find(".requestRules");
         const responseRulesInput = override.find(".responseRules");
@@ -20,6 +21,7 @@
         const ruleOnOff = override.find(".onoffswitch");
         const deleteBtn = override.find(".sym-btn");
 
+        nameInput.val(savedData.name || "");
         matchInput.val(savedData.match || "");
         util.makeFieldRequired(matchInput);
 
@@ -53,6 +55,7 @@
 
         app.mainSuggest.init(matchInput);
 
+        nameInput.on("keyup", saveFunc);
         matchInput.on("keyup", saveFunc);
 
         override.on("click", function(e) {
